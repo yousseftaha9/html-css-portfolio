@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+/* || RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  /* that removes the little space that is by default
+    under images because they are inline elements  */
+  max-width: 100%;
+  /*max width of 100 and that means it will not overflow its container  */
+  height: auto;
+}
+
+/* || UTILITY CLASSES */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* || GENERAL STYLES */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 1.5rem "Nunito", sans-serif;
+  min-height: 100vh;
+  background-color: #475569;
+  background-image: radial-gradient(whitesmoke, #475569);
+  display: flex;
+  flex-direction: column;
+  /* we have display flex and flex
+direction column and that is what stacks our
+header on top of the main on top of the footer
+ and keeps it in that order */
+}
+
+header,
+footer {
+  position: sticky;
+  background-color: #1e293b;
+  color: whitesmoke;
+  text-align: center;
+}
+
+header {
+  top: 0;
+}
+
+nav {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-bottom: 2px solid #000;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+nav a, 
+nav a:visited {
+  color: #000;
+}
+
+nav a:hover,
+nav a:focus {
+  color: hsla(0, 0%, 20%, 0.6);
+}
+
+main {
+  flex-grow: 1;
+  /* flex grow so it does fill out the page no matter what */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+footer {
+  bottom: 0;
+}
+
+/* || PROFILE CARD */
+.card {
+  scroll-margin-top: 8rem;
+  /* what this does is when we scroll to joe 
+  or matt or jane when that is scrolled then 
+  it pushes down from the top so it doesn't 
+  scroll underneath the header so you want to
+   have a little margin on the top from the
+scroll and this property will do that */
+  width: min(100%, 350px);
+  /* the min function says hey at a minimum use
+this width and we'll set it to 100 percent so 
+it can grow to 100 width of the container but
+it also takes a max so it says do not grow any
+larger than and we'll put 350 pixels here so 
+we'll fill out whatever the container is up to 350 pixels */
+  background-color: #cbd5e1;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card figure {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card img {
+  border: 5px double #333;
+  border-radius: 50%;
+}
+
+.card figcaption {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+/* || SMALL */
+@media screen and (min-width: 576px) {
+  main {
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 1rem;
+  }
+  .card {
+    width: min(100%, 400px);
+  }
+  .card:last-child {
+    order: -1;
+  }
+}
+
+/* || MEDIUM */
+@media screen and (min-width: 768px) {
+  nav {
+    display: none;
+  }
+  .card {
+    width: min(100%, 325px);
+  }
+  .card figure {
+    flex-flow: column-reverse;
+  }
+  .card p {
+    margin-top: 1rem;
+  }
+}
+
+/* || LARGE */
+@media screen and (min-width: 992px) {
+  .card {
+    width: min(100%, 400px);
+  }
+  .card:nth-child(2) {
+    order: -1;
+  }
+}
+
+/* || XL  */
+@media screen and (min-width: 1200px) {
+  .card {
+    width: min(calc(33% - 1rem), 500px);
+  }
+}
+
+/* || MOBILE DEVICE LANDSCAPE  */
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    display: none;
+  }
+
+  main {
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+
+  .card {
+    width: min(calc(33% - 0.25rem), 200px);
+  }
+
+  .card figcaption,
+  .card p {
+    font-size: 1.25rem;
+  }
+}
